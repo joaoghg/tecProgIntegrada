@@ -32,6 +32,7 @@ def gerar_qrcode():
     img = qr.make_image(fill_color="black", back_color="white")
     temp_file_path = "temp_qrcode.png"
     img.save(temp_file_path)
+    temp_file_path = '../../' + temp_file_path
     return send_file(temp_file_path, mimetype='image/png', as_attachment=True, download_name='qrcode.png')
 
 @app.route('/api/payload', methods=['POST'])
