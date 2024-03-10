@@ -128,6 +128,9 @@ def get_tasks():
 def add_task():
     data = request.json
     tasks = load_tasks()
+    task_ids = [task['id'] for task in tasks]
+    new_task_id = max(task_ids) + 1 if task_ids else 1
+    data['id'] = new_task_id
     data['completed'] = False
     tasks.append(data)
     save_tasks(tasks)
